@@ -1,89 +1,167 @@
-@use '../settings' as v;
+@use "../settings" as v;
+
+* {
+  font-size: 24px;
+}
 
 .todo {
-    padding-top: 10px;
+  padding-top: 30px;
 
-    &__title {
-        color: white;
-        background-color: #F08A4F;
-        padding: 10px;
-        text-align: left;
-        font-family: v.$font-title;
+  &__title {
+    color: white;
+    background-color: #f08a4f;
+    padding: 10px;
+    text-align: left;
+    font-family: v.$font-title;
+    font-size: 52px;
+    letter-spacing: 1px;
+    padding-left: 30px;
+  }
+
+  &__subtitle {
+    font-family: v.$font-title;
+    letter-spacing: 1.5px;
+    padding-left: 30px;
+    font-size: 42px;
+    padding: 10px 10px 10px 30px;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 60%;
+      height: 5px;
+      position: absolute;
+      background-color: black;
+      bottom: 0;
+      left: 60px;
+    }
+  }
+
+  &__app {
+    text-align: center;
+  }
+
+  &__btn {
+    color: white;
+    background-color: #6e3f24;
+    border: 2px solid #6e3f24;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+
+    &:hover {
+      background-color: #a75f35;
+    }
+  }
+
+  &__choices {
+    margin-left: 10px;
+    border: unset;
+    width: 200px;
+    padding: 12px;
+    border: 2px solid #6e3f24;
+    border-radius: 10px;
+
+    /* Arrow */
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 0.65rem auto;
+  }
+
+  &__form {
+    margin-top: 30px;
+    font-family: v.$font-general;
+  }
+
+  &__input {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: v.$font-general;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 10px 10px 10px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    animation: fadeIn 1s;
+
+    &__text {
+      color: #0a0603;
+      margin-right: 30px;
+      transition: color 2.5s;
     }
 
-    &__app {
-        text-align: center;
+    &__checkbox {
+      cursor: pointer;
+      height: 25px;
+      width: 25px;
+      margin-right: 30px;
+      transform: translateY(4px);
+
+      &:hover {
+        color: gray;
+      }
     }
+  }
 
-    &__btn {
-        color: white;
-        background-color: #6E3F24;
-        border: 2px solid #6E3F24;
-        border-radius: 10px;
-        padding: 10px 15px;
-        cursor: pointer;
-        margin-left: 10px;
+  &__btn__delete {
+    background-color: crimson;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 18px;
+
+    &:hover {
+      background-color: rgb(133, 14, 38);
     }
-
-    &__form {
-        padding: 10px;
-        font-family: v.$font-general;
-    }
-
-    &__input {
-        padding: 10px;
-        border-radius: 10px;
-    }
-
-    &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-family: v.$font-general;
-
-        h3 {
-            text-decoration: underline;
-            padding: 10px;
-        }
-    }
-
-    &__list {
-        list-style: none;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    &__item {
-        display: flex;
-        align-items: center;
-
-        &__text {
-            margin-right: 10px;
-        }
-
-        &__checkbox {
-            margin-right: 10px;
-            cursor: pointer;
-            height: 25px;
-            width: 25px;
-
-            &:hover {
-                color: gray;
-            }
-        }
-    }
-
-    &__btn__delete {
-        background-color: crimson;
-        border: none;
-        border-radius: 10px;
-        padding: 10px 15px;
-    }
-    
+  }
 }
 
 .complete {
-   color: grey;
-   text-decoration: line-through;
+  color: grey;
+  //   text-decoration: line-through;
+  transition: color 0.8s;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: gray;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    animation: fadeIn 1s;
+  }
+}
+
+@media (max-width: 769px) {
+  * {
+    font-size: 24px;
+  }
+
+  .todo {
+    &__form {
+      margin-bottom: 30px;
+    }
+  }
 }

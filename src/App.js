@@ -6,6 +6,8 @@ const App = () => {
   // we put the state here so we can use it in every files
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
+  const [selects, setSelects] = useState("all");
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   // run once when the app start
   useEffect(() => {
@@ -14,10 +16,26 @@ const App = () => {
 
   //use effect
   useEffect(() => {
+    filterHandler();
     saveLocalTodos();
     // get rid of the error
     // eslint-disable-next-line
-  }, [todos]);
+  }, [todos, selects]);
+
+  // filter the todos
+  const filterHandler = () => {
+    switch (selects) {
+      case "complete":
+        setFilteredTodos(todos.filter((todo) => todo.complete === true));
+        break;
+      case "inProgress":
+        setFilteredTodos(todos.filter((todo) => todo.complete === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  };
 
   //save to local
   const saveLocalTodos = () => {
@@ -47,10 +65,16 @@ const App = () => {
       <TodoForm
         todos={todos}
         setTodos={setTodos}
-        setInputText={setInputText}
         inputText={inputText}
+        setInputText={setInputText}
+        selects={selects}
+        setSelects={setSelects}
       />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList
+        filteredTodos={filteredTodos}
+        todos={todos}
+        setTodos={setTodos}
+      />
       {/* inputText update himself with the e.target.value that we took in the TodoForm */}
       {/* <p>{inputText}</p> */}
     </div>

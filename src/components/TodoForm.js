@@ -1,6 +1,17 @@
 import React from "react";
 
-const TodoForm = ({ inputText, setInputText, todos, setTodos }) => {
+const TodoForm = ({
+  inputText,
+  setInputText,
+  todos,
+  setTodos,
+  select,
+  setSelects,
+}) => {
+  const choiceHandler = (e) => {
+    setSelects(e.target.value);
+  };
+
   const inputTextHandler = (e) => {
     // console.log(e);
     // get the value of the input
@@ -35,6 +46,15 @@ const TodoForm = ({ inputText, setInputText, todos, setTodos }) => {
       <button onClick={submitTodoHandler} className="todo__btn" type="submit">
         Add Todo
       </button>
+      <select
+        className="todo__choices"
+        name="todoChoices"
+        onChange={choiceHandler}
+      >
+        <option value="all">All</option>
+        <option value="inProgress">In progress</option>
+        <option value="complete">Completed</option>
+      </select>
     </form>
   );
 };
