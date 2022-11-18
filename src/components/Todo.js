@@ -24,16 +24,34 @@ const Todo = ({ text, todo, todos, setTodos }) => {
     );
   };
 
+  // useEffect(() => {
+  //   if (localStorage.getItem("localTasks")) {
+  //     const storedList = JSON.parse(localStorage.getItem("localTasks"));
+  //     setTodos(storedList);
+  //   }
+  // }, []);
+
+  // const newTodos = [todo, ...todos];
+  // localStorage.setItem("localTasks", JSON.stringify(newTodos));
+  // setTodos(newTodos);
+
   return (
     <div className="todo">
       {/* we are gonna write JS so {}; ?if it's true :if false  */}
-      <li className={`todo__item ${todo.complete ? "complete" : ""}`}>
-        <input onClick={completeHandler} type="checkbox" />
-        {text}
+      <li className="todo__item">
+        <p className={`todo__item__text ${todo.complete ? "complete" : ""}`}>
+          {text}
+        </p>
+        <input
+          onClick={completeHandler}
+          type="checkbox"
+          className="todo__item__checkbox"
+        />
+        <span class="checkmark"></span>
+        <button onClick={deleteHandler} className="todo__btn__delete">
+          Delete
+        </button>
       </li>
-      <button onClick={deleteHandler} className="btn__delete">
-        Delete
-      </button>
     </div>
   );
 };

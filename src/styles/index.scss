@@ -1,8 +1,2 @@
-li {
-    list-style: none;
-}
-
-.complete {
-   color: grey;
-   text-decoration: line-through;
-}
+@forward 'settings';
+@forward './components/todo';

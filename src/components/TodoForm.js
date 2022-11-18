@@ -22,7 +22,7 @@ const TodoForm = ({ inputText, setInputText, todos, setTodos }) => {
     setInputText("");
   };
   return (
-    <form>
+    <form className="todo__form">
       <input
         type="text"
         className="todo__input"

@@ -1,0 +1,89 @@
+@use '../settings' as v;
+
+.todo {
+    padding-top: 10px;
+
+    &__title {
+        color: white;
+        background-color: #F08A4F;
+        padding: 10px;
+        text-align: left;
+        font-family: v.$font-title;
+    }
+
+    &__app {
+        text-align: center;
+    }
+
+    &__btn {
+        color: white;
+        background-color: #6E3F24;
+        border: 2px solid #6E3F24;
+        border-radius: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    &__form {
+        padding: 10px;
+        font-family: v.$font-general;
+    }
+
+    &__input {
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-family: v.$font-general;
+
+        h3 {
+            text-decoration: underline;
+            padding: 10px;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &__text {
+            margin-right: 10px;
+        }
+
+        &__checkbox {
+            margin-right: 10px;
+            cursor: pointer;
+            height: 25px;
+            width: 25px;
+
+            &:hover {
+                color: gray;
+            }
+        }
+    }
+
+    &__btn__delete {
+        background-color: crimson;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 15px;
+    }
+    
+}
+
+.complete {
+   color: grey;
+   text-decoration: line-through;
+}
