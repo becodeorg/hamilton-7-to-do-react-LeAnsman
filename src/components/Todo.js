@@ -10,7 +10,7 @@ const Todo = ({ text, todo, todos, setTodos }) => {
     // set complete from false to true
     setTodos(
       todos.map((item) => {
-        // again, comparing the item clicked and the todo in state
+        // again, comparing the item clicked and the todo
         if (item.id === todo.id) {
           return {
             // return the item but with complete value switched

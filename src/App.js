@@ -3,8 +3,11 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 const App = () => {
+  // without useRef, we needed to add another useState
+  // const [inputText, setInputText] = useState("");
+
   // we put the state here so we can use it in every files
-  const [inputText, setInputText] = useState("");
+
   const [todos, setTodos] = useState([]);
   const [selects, setSelects] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
@@ -59,14 +62,10 @@ const App = () => {
 
   return (
     <div className="todo__app">
-      {/* Taking setInputText and passing it to the form with a props*/}
-      {/* We can get access to it in the Todoform */}
       <h1 className="todo__title">To Do App in React</h1>
       <TodoForm
         todos={todos}
         setTodos={setTodos}
-        inputText={inputText}
-        setInputText={setInputText}
         selects={selects}
         setSelects={setSelects}
       />
@@ -75,8 +74,6 @@ const App = () => {
         todos={todos}
         setTodos={setTodos}
       />
-      {/* inputText update himself with the e.target.value that we took in the TodoForm */}
-      {/* <p>{inputText}</p> */}
     </div>
   );
 };

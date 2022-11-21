@@ -1,11 +1,7 @@
 @use "../settings" as v;
 
-* {
-  font-size: 24px;
-}
-
 .todo {
-  padding-top: 30px;
+  padding-top: 20px;
 
   &__title {
     color: white;
@@ -155,10 +151,6 @@
 }
 
 @media (max-width: 769px) {
-  * {
-    font-size: 24px;
-  }
-
   .todo {
     &__form {
       margin-bottom: 30px;
